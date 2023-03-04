@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Painters</string>
+    <string name="level">Level:</string>
+    <string name="aboutofpainters">About the Painters</string>
+    <string name="skip">Skip</string>
+    <string name="signin">Sign In</string>
+    <string name="email">Enter Email</string>
+    <string name="password">Password</string>
+    <string name="rem">Remember me</string>
+    <string name="forgot">Forgot Password</string>
+    <string name="login">LOGIN</string>
+    <string name="dont">Dont have an Account?</string>
+    <string name="signup">Sign Up</string>
+    <string name="or">Or sign in with</string>
+    <string name="signup2">Sign Up</string>
+    <string name="username">Username</string>
+    <string name="conform">Conform Password</string>
+    <string name="create">CREATE ACCOUNT</string>
+    <string name="doyou">Do you already have an Account?</string>
+    <string name="forgottext">Forgot Password?</string>
+    <string name="send">SEND RESET LINK</string>
+    <string name="back">Back to</string>
+    <string name="play">Play</string>
+    <string name="back2">Back</string>
+    <string name="welcome">Welcome</string>
+    <string name="signout">Sign Out</string>
+    <string name="start">Start</string>
+    <string name="dialog_title">Info</string>
+    <string name="aboutofgame">About the game</string>
+    <string name="abc">Hello, during this game you will get to know different artists, their paintings and play a game.
+During the game you will also learn about their biography.
+Due to non-registration, the result of the game may be lost.</string>
+    <string name="abc2">
+All permissions are available (paintings is also available) The creator of the game is David Ghazaryan</string>
+    <string name="abc3">But it is not exactly</string>
+
+    <string name="ayvazovski2"><b>Descent of Noah from Ararat</b></string>
+
+    <string name="ayvazovski">
+        <b>Descent of Noah from Ararat</b>
+        \n\n
+        "Descent of Noah from Ararat (1889)", - a painting <u>by Ivan Konstantinovich Aivazovsky</u>.
+
+
+
+    </string>
+
+    <string name="aliq1"><b>The Ninth Wave</b></string>
+
+    <string name="aliq2">
+
+        <b>The Ninth Wave</b>  is a 1905 painting <u>by Ivan Konstantinovich Aivazovsky</u>.
+        \n\n
+        <b>Ivan Konstantinovich Aivazovsky</b>
+        \n\n
+
+
+    </string>
+</resources>

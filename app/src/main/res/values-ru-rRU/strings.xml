@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Художники</string>
+    <string name="level">Уровень:</string>
+    <string name="aboutofpainters">Про Художников</string>
+    <string name="skip">Пропустить</string>
+    <string name="signin">Войти</string>
+    <string name="email">Введите адрес электронной почты</string>
+    <string name="password">Пароль</string>
+    <string name="rem">запомнить меня</string>
+    <string name="forgot">Забыл пароль</string>
+    <string name="login">Вход</string>
+    <string name="dont">Нет учетной записи</string>
+    <string name="signup">Зарегристрироваться</string>
+    <string name="or">или войдите с помощью</string>
+    <string name="signup2">Регистрация</string>
+    <string name="username">Имя пользователя</string>
+    <string name="conform">Подтвердить пароль</string>
+    <string name="create">зарегистрироваться</string>
+    <string name="doyou">У вас уже есть аккаунт?</string>
+    <string name="forgottext">Забыли пароль?</string>
+    <string name="send">ОТПРАВИТЬ ССЫЛКУ ДЛЯ СБРОСА</string>
+    <string name="back">Вернуться к</string>
+    <string name="play">Играть</string>
+    <string name="back2">Назад</string>
+    <string name="welcome">Добро Пожаловать</string>
+    <string name="signout">Выйти</string>
+    <string name="start">Начать</string>
+    <string name="dialog_title">Информация</string>
+    <string name="aboutofgame">Об игре</string>
+    <string name="abc">Здравствуйте, во время этой игры вы познакомитесь с разными художниками, их картинами и поиграете в игру.
+В ходе игры вы также узнаете об их биографии.
+Из-за отсутствия регистрации результаты игры могут быть утеряны.</string>
+    <string name="abc2">Все разрешения имеются (картин тоже имеются)Создатель игры - Давид Казарян</string>
+    <string name="abc3">Но это не точно</string>
+    <string name="ayvazovski2"><b>Сошествие Ноя с горы Арарат</b></string>
+    <string name="ayvazovski">
+        <b>Сошествие Ноя с горы Арарат</b>
+        \n\n
+        Сошествие Ноя с горы Арарат (1889), — картина Иван Константинович Айвазовски, одно из самых известных произведений живописи.
+        \n\n
+        <b>Иван Константинович Айвазовски</b>
+
+    </string>
+    <string name="aliq1"><b>«Девятый вал»</b></string>
+
+    <string name="aliq2">
+
+        <b>Девятый вал </b> - картина <u>Иван Константинович Айвазовский</u>, написанная в 1850 году.
+        \n\n
+        <b>Иван Константинович Айвазовский</b>
+        \n\n
+
+    </string>
+
+
+</resources>

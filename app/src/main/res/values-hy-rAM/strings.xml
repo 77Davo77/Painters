@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Նկարիչներ</string>
+    <string name="level">Մակարդակ:</string>
+    <string name="aboutofpainters">Նկարիչների մասին</string>
+    <string name="skip">Բաց թողնել</string>
+    <string name="signin">Մուտք գործել</string>
+    <string name="email">մուտքագրեք էլ.փոստի հասցեն</string>
+    <string name="password">Գաղտնաբառ</string>
+    <string name="rem">Հիշիր ինձ</string>
+    <string name="forgot">Մոռացել եք?</string>
+    <string name="login">ՄՈՒՏՔ</string>
+    <string name="dont">Հաշիվ չունե՞ք:</string>
+    <string name="signup">Գրանցվել</string>
+    <string name="or">Կամ մուտք գործեք</string>
+    <string name="signup2">Գրանցվել</string>
+    <string name="username">Օգտագործողի անունը</string>
+    <string name="conform">Համապատասխանեցրեք գաղտնաբառը</string>
+    <string name="create">ԳՐԱՆՑՎԵԼ</string>
+    <string name="doyou">Դուք արդեն ունե՞ք հաշիվ:</string>
+    <string name="forgottext">Մոռացել եք?</string>
+    <string name="send">ՈՒՂԱՐԿԵԼ ՎԵՐԱԿԱՆԳՄԱՆ ՀՂՈՒՄԸ</string>
+    <string name="back">Հետ դեպի</string>
+    <string name="play">Խաղալ</string>
+    <string name="back2">Հետ</string>
+    <string name="welcome">Բարև Ձեզ</string>
+    <string name="signout">Դուրս Գալ</string>
+    <string name="start">Սկսել</string>
+    <string name="dialog_title">Տեղեկատվություն</string>
+    <string name="aboutofgame">Խաղի մասին</string>
+    <string name="abc">Բարև ձեզ , դուք այս խաղի ընթացքում կծանոթանաք տարբեր նկարիչների հետ նրանց նկարների և խաղ կղաղաք։
+Խաղի ընթացքում կծանոթանաք նաև նրանց կենսագրության մասին։
+Չգրանցվելու պատճառով կարող է խաղի արդյունքը կորչել։</string>
+    <string name="abc2">Բոլոր թույլտվությունները հասանելի են (նկարներինը նույնպես հասանելի է)։ Խաղի ստեղծողը - Դավիթ Ղազարյանն է</string>
+    <string name="abc3">Բայց դա հենց այնպես չէ</string>
+    <string name="ayvazovski2"><b>Նոյն իջնում է Արարատից</b></string>
+    <string name="ayvazovski">
+
+<b>Նոյն իջնում է Արարատից (1889)</b>
+        \n\n
+        \n\n
+        <b>Հովհաննես Կոստանդինի Այվազովսկին</b>
+        \n\n
+
+    </string>
+
+    <string name="aliq1"><b>Իններորդ Ալիք</b></string>
+
+    <string name="aliq2">
+
+        <b>Իններորդ Ալիք</b> - նկարը նկարել է <u>Հովհաննես Կոստանդինի Այվազովսկին</u>, 1850 թվականին.
+        \n\n
+        <b>Հովհաննես Կոստանդինի Այվազովսկի</b>
+        \n\n
+
+    </string>
+
+</resources>

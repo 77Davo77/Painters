@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="10dp"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/change"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="48dp"
+        android:src="@drawable/change"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/info"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        android:src="@drawable/ic_baseline_info_24"
+        tools:ignore="MissingConstraints" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:hint="@string/app_name"
+        android:textColorHint="@color/white"
+        android:textSize="64dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/how"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/input_bg"
+        android:backgroundTint="@color/white"
+        android:hint="@string/aboutofpainters"
+        android:paddingTop="10dp"
+        android:textColorHint="@color/black"
+        android:textSize="24dp"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.582" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/how"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/input_bg"
+        android:backgroundTint="@color/white"
+        android:hint="@string/signin"
+        android:paddingTop="10dp"
+        android:textColorHint="@color/black"
+        android:textSize="24dp"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1"
+        app:layout_constraintVertical_bias="0.071" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/how2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/input_bg"
+        android:backgroundTint="@color/white"
+        android:hint="@string/aboutofgame"
+        android:paddingTop="10dp"
+        android:textColorHint="@color/black"
+        android:textSize="24dp"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1"
+        app:layout_constraintVertical_bias="0.413" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_bg"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="31dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
