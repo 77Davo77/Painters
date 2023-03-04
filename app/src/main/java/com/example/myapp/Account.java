@@ -8,10 +8,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapp.databinding.ActivityLoginBinding;
+import com.example.myapp.databinding.ActivityRegistorBinding;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -26,6 +28,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Account extends AppCompatActivity {
 
     TextView name, email, SignOutBtn;
+
+    ActivityRegistorBinding binding;
     GoogleSignInClient gsc;
     GoogleSignInOptions gso;
     BottomNavigationView bottomNavigationView;
@@ -33,6 +37,9 @@ public class Account extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Window w = getWindow();
+        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         setContentView(R.layout.activity_account);
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
@@ -52,9 +59,6 @@ public class Account extends AppCompatActivity {
                         break;
                     case R.id.statistics:
                         startActivity(new Intent(Account.this, Statistics2.class));
-                        break;
-                    case R.id.account:
-                        startActivity(new Intent(Account.this, Account.class));
                         break;
                 }
                 return true;
@@ -90,7 +94,5 @@ public class Account extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),login.class));
             }
         });
-
-
     }
 }

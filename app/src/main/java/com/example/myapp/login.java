@@ -10,6 +10,7 @@ import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,6 +44,9 @@ public class login extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Window w = getWindow();
+        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         binding=ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         googleBtn = findViewById(R.id.imageView);
@@ -62,6 +66,7 @@ public class login extends AppCompatActivity {
                             public void onSuccess(AuthResult authResult) {
                                 progressDialog.cancel();
                                 Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(login.this, Account.class));
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {

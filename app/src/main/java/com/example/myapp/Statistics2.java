@@ -7,6 +7,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,6 +23,9 @@ public class Statistics2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Window w = getWindow();
+        w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         setContentView(R.layout.activity_statistics2);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -32,9 +37,6 @@ public class Statistics2 extends AppCompatActivity {
 
                     case R.id.home:
                         startActivity(new Intent(Statistics2.this,MainActivity.class));
-                        break;
-                    case R.id.statistics:
-                        startActivity(new Intent(Statistics2.this,Statistics2.class));
                         break;
                     case R.id.account:
                         startActivity(new Intent(Statistics2.this,Account.class));

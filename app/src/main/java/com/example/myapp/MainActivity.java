@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     ImageView changeLanguage, infoBtn;
-    TextView how2, start;
+    TextView how2, start,play;
 
     private long backPressedTime;
     private Toast backToast;
@@ -116,6 +116,42 @@ public class MainActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+
+        play = findViewById(R.id.play);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                mBuilder.setTitle("Choose the game");
+                mBuilder.setCancelable(false);
+                mBuilder.setPositiveButton("Quizzes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                mBuilder.setNegativeButton("Puzzle", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+                        startActivity(new Intent(MainActivity.this,Puzzle.class));
+                        mBuilder.setCancelable(false);
+                        mBuilder.setNegativeButton("Puzzle", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+
+                        AlertDialog alertDialog = mBuilder.create();
+                        alertDialog.show();
+                    }
+                });
+                AlertDialog alertDialog = mBuilder.create();
+                alertDialog.show();
+            }
+        });
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -123,9 +159,6 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
 
-                    case R.id.home:
-                        startActivity(new Intent(MainActivity.this, MainActivity.class));
-                        break;
                     case R.id.statistics:
                         startActivity(new Intent(MainActivity.this, Statistics2.class));
                         break;
