@@ -137,6 +137,7 @@ public class Puzzle extends AppCompatActivity {
         if (isSolved()) {
             Toast.makeText(context, "You WIN!", Toast.LENGTH_SHORT).show();
         }
+
     }
     public static void moveTiles(Context context, String direction, int position) {
 

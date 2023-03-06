@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
@@ -60,7 +61,10 @@ public class registor extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                startActivity(new Intent(registor.this,login.class));
+                                Intent intent = new Intent(registor.this,Verification.class);
+                                intent.putExtra("email", email);
+                                startActivity(intent);
+
                                 progressDialog.cancel();
 
                                 firebaseFirestore.collection("User")

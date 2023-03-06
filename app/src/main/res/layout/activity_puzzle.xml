@@ -8,4 +8,10 @@
     android:background="@drawable/background2"
     tools:context=".Puzzle">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="vonc es ape"
+        />
+
 </com.example.myapp.GestureDetectGridView>
