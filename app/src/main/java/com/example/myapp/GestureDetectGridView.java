@@ -1,6 +1,7 @@
 package com.example.myapp;
-
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -28,6 +29,13 @@ public class GestureDetectGridView extends GridView {
 
     public GestureDetectGridView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init(context);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP) // API 21
+    public GestureDetectGridView(Context context, AttributeSet attrs, int defStyleAttr,
+                                 int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
 

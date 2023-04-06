@@ -29,6 +29,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class login extends AppCompatActivity {
 
     boolean passwordVisible;
@@ -57,25 +59,40 @@ public class login extends AppCompatActivity {
         binding.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email=binding.Email.getText().toString().trim();
+                String email = binding.Email.getText().toString().trim();
                 String password=binding.password2.getText().toString().trim();
-                progressDialog.show();
-                firebaseAuth.signInWithEmailAndPassword(email,password)
-                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                            @Override
-                            public void onSuccess(AuthResult authResult) {
-                                progressDialog.cancel();
-                                Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(login.this, Account.class));
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                progressDialog.cancel();
-                                Toast.makeText(login.this,e.getMessage() , Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                    firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if(task.isSuccessful()){
+                                       if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
+                                            Intent intent = new Intent(login.this,Account.class);
+                                            intent.putExtra("email", email);
+                                            startActivity(intent);
+                                            Toast.makeText(login.this, "Successful", Toast.LENGTH_SHORT).show(); }
+                                        else{
+                                            Toast.makeText(login.this, "Please verify your email", Toast.LENGTH_SHORT).show();
+                                        }
+
+                                        }else {
+                                        Toast.makeText(login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                    }
+                            })
+                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                                @Override
+                                public void onSuccess(AuthResult authResult) {
+                                    Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(login.this, Account.class));
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    progressDialog.cancel();
+                                    Toast.makeText(login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
             }
         });
 

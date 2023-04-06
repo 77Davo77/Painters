@@ -9,17 +9,17 @@
 
     <ImageView
         android:layout_width="250dp"
-        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/verification"
         android:layout_gravity="center"
-        android:adjustViewBounds="true"/>
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/verification" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Please enter your code that we have sent to your email "
+        android:text="We sent a link to your email"
         android:textColor="#66000000"
         android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
@@ -45,106 +45,30 @@
         android:textSize="16sp"
         android:textStyle="bold"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="4"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:gravity="center">
-
-        <EditText
-            android:id="@+id/ver1"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="10dp"
-            android:layout_weight="1"/>
-
-        <EditText
-            android:id="@+id/ver2"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"/>
-
-        <EditText
-            android:id="@+id/ver3"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"/>
-
-        <EditText
-            android:id="@+id/ver4"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:inputType="number"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_weight="1"/>
-
-</LinearLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/verifyBtn"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="40dp"
-        android:background="@color/teal_700"
-        android:text="Verify"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"/>
 
     <LinearLayout
-        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
         android:gravity="center"
-        android:layout_marginTop="10dp">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Didn't receive Verification"/>
+            android:text="Didn't receive Verification" />
 
         <TextView
             android:id="@+id/resendBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:onClick="resendBtn"
             android:text="Resend Code"
             android:textColor="@color/teal_200"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            tools:ignore="OnClick" />
 
     </LinearLayout>
 

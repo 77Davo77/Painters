@@ -2,6 +2,7 @@ package com.example.myapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.ViewTreeObserver;
@@ -13,19 +14,19 @@ import java.util.Random;
 
 public class Puzzle extends AppCompatActivity {
 
-    private static final int COLUMNS = 3;
-    private static final int DIMENSIONS = COLUMNS + COLUMNS;
-
-    public static String[] tileList;
-
     private static GestureDetectGridView mGridView;
 
-    private static int mColumnWidth,mColumnHeight;
+    private static final int COLUMNS = 3;
+    private static final int DIMENSIONS = COLUMNS * COLUMNS;
+
+    private static int mColumnWidth, mColumnHeight;
 
     public static final String up = "up";
     public static final String down = "down";
     public static final String left = "left";
     public static final String right = "right";
+
+    private static String[] tileList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +37,30 @@ public class Puzzle extends AppCompatActivity {
 
         scramble();
 
-
         setDimensions();
+    }
+
+    private void init() {
+        mGridView = (GestureDetectGridView) findViewById(R.id.grid);
+        mGridView.setNumColumns(COLUMNS);
+
+        tileList = new String[DIMENSIONS];
+        for (int i = 0; i < DIMENSIONS; i++) {
+            tileList[i] = String.valueOf(i);
+        }
+    }
+
+    private void scramble() {
+        int index;
+        String temp;
+        Random random = new Random();
+
+        for (int i = tileList.length - 1; i > 0; i--) {
+            index = random.nextInt(i + 1);
+            temp = tileList[index];
+            tileList[index] = tileList[i];
+            tileList[i] = temp;
+        }
     }
 
     private void setDimensions() {
@@ -49,26 +72,26 @@ public class Puzzle extends AppCompatActivity {
                 int displayWidth = mGridView.getMeasuredWidth();
                 int displayHeight = mGridView.getMeasuredHeight();
 
-                int statusBarHeight = getStatusBarHeight(getApplicationContext());
-                int requiredHeight = displayHeight - statusBarHeight;
+                int statusbarHeight = getStatusBarHeight(getApplicationContext());
+                int requiredHeight = displayHeight - statusbarHeight;
 
                 mColumnWidth = displayWidth / COLUMNS;
                 mColumnHeight = requiredHeight / COLUMNS;
 
                 display(getApplicationContext());
-
             }
         });
     }
 
     private int getStatusBarHeight(Context context) {
         int result = 0;
-        int resourceId = context.getResources().getIdentifier("status_bar_height","dimen","android");
+        @SuppressLint({"InternalInsetResource", "DiscouragedApi"}) int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen",
+                "android");
 
         if (resourceId > 0) {
             result = context.getResources().getDimensionPixelSize(resourceId);
-
         }
+
         return result;
     }
 
@@ -76,17 +99,17 @@ public class Puzzle extends AppCompatActivity {
         ArrayList<Button> buttons = new ArrayList<>();
         Button button;
 
-        for(int i = 0;i < tileList.length;i++) {
+        for (int i = 0; i < tileList.length; i++) {
             button = new Button(context);
 
             if (tileList[i].equals("0"))
                 button.setBackgroundResource(R.drawable.image_part_001);
             else if (tileList[i].equals("1"))
-            button.setBackgroundResource(R.drawable.image_part_002);
+                button.setBackgroundResource(R.drawable.image_part_002);
             else if (tileList[i].equals("2"))
-            button.setBackgroundResource(R.drawable.image_part_003);
+                button.setBackgroundResource(R.drawable.image_part_003);
             else if (tileList[i].equals("3"))
-            button.setBackgroundResource(R.drawable.image_part_004);
+                button.setBackgroundResource(R.drawable.image_part_004);
             else if (tileList[i].equals("4"))
                 button.setBackgroundResource(R.drawable.image_part_005);
             else if (tileList[i].equals("5"))
@@ -100,45 +123,19 @@ public class Puzzle extends AppCompatActivity {
 
             buttons.add(button);
         }
-        mGridView.setAdapter(new CustomAdapter(buttons,mColumnWidth,mColumnHeight));
 
+        mGridView.setAdapter(new CustomAdapter(buttons, mColumnWidth, mColumnHeight));
     }
 
-    private void scramble() {
-        int index;
-        String temp;
-        Random random = new Random();
-
-        for(int i = tileList.length -1;i > 0;i--){
-            index = random.nextInt(i + 1);
-            temp = tileList[index];
-            tileList[index] = tileList[i];
-            tileList[i] = temp;
-
-        }
-    }
-
-    private void init() {
-        mGridView = (GestureDetectGridView) findViewById(R.id.grid);
-        mGridView.setNumColumns(COLUMNS);
-
-        tileList = new String[DIMENSIONS];
-        for(int i = 0; i < DIMENSIONS; i++){
-            tileList[i] = String.valueOf(i);
-        }
-    }
-
-    private static void swap(Context context,int position, int swap) {
-        String newPosition = tileList[position + swap];
-        tileList[position + swap] = tileList[position];
-        tileList[position] = newPosition;
+    private static void swap(Context context, int currentPosition, int swap) {
+        String newPosition = tileList[currentPosition + swap];
+        tileList[currentPosition + swap] = tileList[currentPosition];
+        tileList[currentPosition] = newPosition;
         display(context);
 
-        if (isSolved()) {
-            Toast.makeText(context, "You WIN!", Toast.LENGTH_SHORT).show();
-        }
-
+        if (isSolved()) Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
     }
+
     public static void moveTiles(Context context, String direction, int position) {
 
         // Upper-left-corner tile
@@ -162,7 +159,8 @@ public class Puzzle extends AppCompatActivity {
             else Toast.makeText(context, "Invalid move", Toast.LENGTH_SHORT).show();
 
             // Left-side tiles
-        } else if (position > COLUMNS - 1 && position < DIMENSIONS - COLUMNS && position % COLUMNS == 0) {
+        } else if (position > COLUMNS - 1 && position < DIMENSIONS - COLUMNS &&
+                position % COLUMNS == 0) {
             if (direction.equals(up)) swap(context, position, -COLUMNS);
             else if (direction.equals(right)) swap(context, position, 1);
             else if (direction.equals(down)) swap(context, position, COLUMNS);

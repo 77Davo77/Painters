@@ -2,10 +2,13 @@ package com.example.myapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.WindowDecorActionBar;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.service.autofill.RegexValidator;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
@@ -13,6 +16,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.example.myapp.databinding.ActivityRegistorBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,6 +26,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class registor extends AppCompatActivity {
 
+    public static WindowDecorActionBar.TabImpl Email;
     ActivityRegistorBinding binding;
 
     FirebaseAuth firebaseAuth;
@@ -34,42 +39,44 @@ public class registor extends AppCompatActivity {
     EditText password3;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Window w = getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        binding= ActivityRegistorBinding.inflate(getLayoutInflater());
+        binding = ActivityRegistorBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        firebaseAuth= FirebaseAuth.getInstance();
-        firebaseFirestore=FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         progressDialog = new ProgressDialog(this);
 
         binding.signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name=binding.username.getText().toString();
-                String email=binding.Email.getText().toString().trim();
-                String password=binding.password1.getText().toString();
-                String confirmPassword=binding.password3.getText().toString();
-
-                progressDialog.show();
-                firebaseAuth.createUserWithEmailAndPassword(email,password)
+                String name = binding.username.getText().toString();
+                String email = binding.Email.getText().toString().trim();
+                String password = binding.password1.getText().toString();
+                String confirmPassword = binding.password3.getText().toString();
+                if (password.equals(confirmPassword)) {
+                    Intent intent = new Intent(registor.this, login.class);
+                    intent.putExtra("email", email);
+                    intent.putExtra(Intent.EXTRA_SUBJECT, email);
+                    startActivity(intent);
+                    progressDialog.show();
+                } else if (!password.equals(confirmPassword)) {
+                    Toast.makeText(registor.this, "Wrong password", Toast.LENGTH_SHORT).show();
+                }
+                firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                             @Override
                             public void onSuccess(AuthResult authResult) {
-                                Intent intent = new Intent(registor.this,Verification.class);
-                                intent.putExtra("email", email);
-                                startActivity(intent);
-
                                 progressDialog.cancel();
 
                                 firebaseFirestore.collection("User")
                                         .document(FirebaseAuth.getInstance().getUid())
-                                        .set(new UserModel(name,email));
+                                        .set(new UserModel(name, email));
 
                             }
                         })
@@ -80,14 +87,14 @@ public class registor extends AppCompatActivity {
                                 progressDialog.cancel();
                             }
                         });
-
             }
         });
+
 
         binding.forgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(registor.this,login.class));
+                startActivity(new Intent(registor.this, login.class));
             }
         });
 
