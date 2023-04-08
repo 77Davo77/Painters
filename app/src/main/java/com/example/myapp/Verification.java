@@ -24,7 +24,6 @@ import java.util.Objects;
 public class Verification extends AppCompatActivity {
     private TextView resendBtn;
     FirebaseAuth firebaseAuth;
-    private static final String TAG = "Verification";
     ActivityVerificationBinding binding;
     EditText mEmail;
     private boolean resendEnable = true;
@@ -43,11 +42,6 @@ public class Verification extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         binding= ActivityVerificationBinding.inflate(getLayoutInflater());
 
-
-
-
-
-
         resendBtn.setOnClickListener(view -> {
             if(resendEnable){
                 sendVerificationEmail2();
@@ -56,7 +50,6 @@ public class Verification extends AppCompatActivity {
         });
 
     }
-
 
     private void startCountDownTimer(){
         resendEnable = true;
@@ -80,7 +73,7 @@ public class Verification extends AppCompatActivity {
         }.start();
     }
     private void sendVerificationEmail2() {
-       Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).
+        FirebaseAuth.getInstance().getCurrentUser().
         sendEmailVerification()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -95,41 +88,6 @@ public class Verification extends AppCompatActivity {
                     }
                 });
     }
-    public void sendVerificationEmail() {
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (user != null) {
-            user.sendEmailVerification()
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(Verification.this, "Sent Verification Email", Toast.LENGTH_SHORT).show();
-                            }
-                            else{
-                                Toast.makeText(Verification.this, "Couldn't Verification Send Email", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-        }
-
-    }
-
-    private void setCurrentEmail(){
-        Log.d(TAG, "setCurrentEmail: setting current email to EditText field");
-
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
-        if(user != null){
-            Log.d(TAG, "setCurrentEmail: user is NOT null.");
-
-            String email = user.getEmail();
-
-            Log.d(TAG, "setCurrentEmail: got the email: " + email);
-
-            mEmail.setText(email);
-        }
-    }
 
     }
