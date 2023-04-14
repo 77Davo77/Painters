@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Locale;
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
     ImageView changeLanguage, infoBtn;
+    FirebaseAuth firebaseAuth;
     TextView how2, start,play;
 
     private long backPressedTime;
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         loadLocale();
         setContentView(R.layout.activity_main);
+        firebaseAuth= FirebaseAuth.getInstance();
 
         start = findViewById(R.id.button1);
         start.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 mBuilder.setPositiveButton("Quizzes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        startActivity(new Intent(MainActivity.this,quiz.class));
                     }
                 });
                 mBuilder.setNegativeButton("Puzzle", new DialogInterface.OnClickListener() {
@@ -152,22 +155,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()) {
+                    switch (item.getItemId()) {
 
-                    case R.id.statistics:
-                        startActivity(new Intent(MainActivity.this, Statistics2.class));
-                        break;
-                    case R.id.account:
-                        startActivity(new Intent(MainActivity.this, Account.class));
-                        break;
+                        case R.id.statistics:
+                            startActivity(new Intent(MainActivity.this, Statistics2.class));
+                            break;
+                        case R.id.account:
+                            startActivity(new Intent(MainActivity.this, Account.class));
+                            break;
+                    }
+                    return true;
                 }
-                return true;
-            }
-        });
+            });
 
         changeLanguage = findViewById(R.id.change);
         changeLanguage.setOnClickListener(new View.OnClickListener() {

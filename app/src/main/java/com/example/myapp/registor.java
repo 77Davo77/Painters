@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.WindowDecorActionBar;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,6 +40,7 @@ public class registor extends AppCompatActivity {
     EditText password3;
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +67,7 @@ public class registor extends AppCompatActivity {
                     intent.putExtra(Intent.EXTRA_SUBJECT, email);
                     startActivity(intent);
                     progressDialog.show();
-                } else if (!password.equals(confirmPassword)) {
+                } else {
                     Toast.makeText(registor.this, "Wrong password", Toast.LENGTH_SHORT).show();
                 }
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -99,29 +101,26 @@ public class registor extends AppCompatActivity {
         });
 
         EditText password1 = findViewById(R.id.password1);
-        password1.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                final int Right = 2;
-                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-                    if (motionEvent.getRawX() >= password1.getRight() - password1.getCompoundDrawables()[Right].getBounds().width()) {
-                        int selection = password1.getSelectionEnd();
-                        if (passwordVisible) {
-                            password1.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_off_24, 0);
-                            password1.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                            passwordVisible = false;
-                        } else {
-                            password1.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_24, 0);
-                            password1.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                            passwordVisible = true;
-                        }
-                        password1.setSelection(selection);
-                        return true;
+        password1.setOnTouchListener((view, motionEvent) -> {
+            final int Right = 2;
+            if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                if (motionEvent.getRawX() >= password1.getRight() - password1.getCompoundDrawables()[Right].getBounds().width()) {
+                    int selection = password1.getSelectionEnd();
+                    if (passwordVisible) {
+                        password1.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_off_24, 0);
+                        password1.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        passwordVisible = false;
+                    } else {
+                        password1.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_24, 0);
+                        password1.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                        passwordVisible = true;
                     }
+                    password1.setSelection(selection);
+                    return true;
                 }
-
-                return false;
             }
+
+            return false;
         });
         password3 = findViewById(R.id.password3);
         password3.setOnTouchListener(new View.OnTouchListener() {

@@ -3,6 +3,7 @@ package com.example.myapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Objects;
 
@@ -38,11 +40,13 @@ public class login extends AppCompatActivity {
     ActivityLoginBinding binding;
 
     ProgressDialog progressDialog;
+    FirebaseAuth firebaseUser;
     FirebaseAuth firebaseAuth;
     ImageView googleBtn;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +58,7 @@ public class login extends AppCompatActivity {
         googleBtn = findViewById(R.id.imageView);
 
         firebaseAuth=FirebaseAuth.getInstance();
+        firebaseUser=FirebaseAuth.getInstance();
         progressDialog=new ProgressDialog(this);
 
         binding.login.setOnClickListener(new View.OnClickListener() {
@@ -61,24 +66,19 @@ public class login extends AppCompatActivity {
             public void onClick(View view) {
                 String email = binding.Email.getText().toString().trim();
                 String password=binding.password2.getText().toString().trim();
+                if(firebaseUser.getCurrentUser().isEmailVerified()){
                     firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if(task.isSuccessful()){
-                                       if(FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()){
-                                           String email=binding.Email.getText().toString();
-                                            Intent intent = new Intent(login.this,Verification.class);
-                                            intent.putExtra("email", email);
-                                            startActivity(intent);
-                                            Toast.makeText(login.this, "Successful", Toast.LENGTH_SHORT).show();
-                                       }else{
-                                            Toast.makeText(login.this, "Please verify your email", Toast.LENGTH_SHORT).show();
-                                        }
-
-                                        }else {
-                                        Toast.makeText(login.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(login.this,Account.class);
+                                        intent.putExtra("email", email);
+                                        startActivity(intent);
+                                        Toast.makeText(login.this, "Successful", Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        Toast.makeText(login.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                     }
-                                    }
+                                }
                             })
                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                 @Override
@@ -94,6 +94,11 @@ public class login extends AppCompatActivity {
                                     Toast.makeText(login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
+                }else{
+                    sendVerificationEmail2();
+                    Toast.makeText(login.this, "Email sent, please verify your email", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
@@ -177,6 +182,24 @@ public class login extends AppCompatActivity {
 
 
     }
+
+    private void sendVerificationEmail2() {
+        FirebaseAuth.getInstance().getCurrentUser().
+                sendEmailVerification()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(login.this, "Email sent", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(login.this,e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
     void signIn() {
         Intent signInIntent = gsc.getSignInIntent();
         startActivityForResult(signInIntent, 100);

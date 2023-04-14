@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="We sent a link to your email"
-        android:textColor="#66000000"
+        android:textColor="#66686767"
         android:layout_marginTop="40dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"/>
@@ -31,7 +31,7 @@
         android:text="Email Address"
         android:textColor="#66000000"
         android:layout_gravity="center"
-        android:textSize="12dp"
+        android:textSize="12sp"
         android:layout_marginTop="10dp"
         />
 
@@ -43,10 +43,11 @@
         android:text="test@gmail.com"
         android:textColor="#CC000000"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
 
     <LinearLayout
+        android:id="@+id/resend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -57,6 +58,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:height="48dp"
             android:text="Didn't receive Verification" />
 
         <TextView
@@ -64,6 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:height="48dp"
             android:onClick="resendBtn"
             android:text="Resend Code"
             android:textColor="@color/teal_200"
@@ -71,5 +74,22 @@
             tools:ignore="OnClick" />
 
     </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_bg"
+        android:backgroundTint="@color/white"
+        android:hint="@string/login"
+        android:paddingTop="10dp"
+        android:textColorHint="@color/white"
+        app:backgroundTint="@color/teal_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.478" />
 
 </LinearLayout>
