@@ -111,7 +111,7 @@
         android:textColor="@color/white"
         android:background="@drawable/input_bg"
         android:drawablePadding="20dp"
-        android:hint="@string/conform"
+        android:hint="@string/confirm"
         android:padding="20dp"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"

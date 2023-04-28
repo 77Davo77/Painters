@@ -50,8 +50,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:drawableRight="@drawable/baseline_arrow_back_24"
-                    android:textSize="30sp" />
+                    android:textSize="30sp"
+                    app:drawableRightCompat="@drawable/baseline_arrow_back_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/back1"
+                    android:textSize="24sp"
+                    android:layout_marginLeft="10dp"
+                    app:drawableLeftCompat="@drawable/baseline_home_242" />
 
 
                 <TextView
@@ -60,8 +68,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:drawableRight="@drawable/baseline_arrow_forward_24"
-                    android:textSize="30sp" />
+                    android:textSize="30sp"
+                    app:drawableRightCompat="@drawable/baseline_arrow_forward_24" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -75,7 +83,7 @@
         android:hint="@string/aliq2"
         android:textColorHint="@color/black"
         android:layout_margin="10dp"
-        android:textSize="15dp"
+        android:textSize="15sp"
         />
 
 

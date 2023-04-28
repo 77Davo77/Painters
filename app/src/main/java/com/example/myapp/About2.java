@@ -29,5 +29,12 @@ public class About2 extends AppCompatActivity {
                 startActivity(new Intent(About2.this,About.class));
             }
         });
+        textView6 = findViewById(R.id.back11);
+        textView6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(About2.this,MainActivity.class));
+            }
+        });
     }
 }

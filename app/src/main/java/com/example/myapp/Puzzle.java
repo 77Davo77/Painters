@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
@@ -38,6 +39,7 @@ public class Puzzle extends AppCompatActivity {
         scramble();
 
         setDimensions();
+
     }
 
     private void init() {
@@ -134,6 +136,7 @@ public class Puzzle extends AppCompatActivity {
         display(context);
 
         if (isSolved()) Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
+
     }
 
     public static void moveTiles(Context context, String direction, int position) {

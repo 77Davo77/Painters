@@ -16,12 +16,15 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.Locale;
 
 public class About extends AppCompatActivity {
 
-    TextView textView4, textView2;
+    TextView textView4, textView2,textView3;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +32,7 @@ public class About extends AppCompatActivity {
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         setContentView(R.layout.activity_about);
+
 
         textView2 = findViewById(R.id.textView2);
         textView2.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +48,13 @@ public class About extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(About.this, MainActivity.class));
+            }
+        });
+        textView3 = findViewById(R.id.back1);
+        textView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(About.this,MainActivity.class));
             }
         });
     }

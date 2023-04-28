@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
                         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
                         mBuilder.setIcon(android.R.drawable.sym_def_app_icon);
                         mBuilder.setTitle(R.string.dialog_title);
-                        mBuilder.setMessage(R.string.abc3);
                         mBuilder.setCancelable(false);
                         mBuilder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                             @Override
@@ -104,19 +103,7 @@ public class MainActivity extends AppCompatActivity {
         how2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
-                mBuilder.setIcon(android.R.drawable.sym_def_app_icon);
-                mBuilder.setTitle(R.string.dialog_title);
-                mBuilder.setMessage(R.string.abc);
-                mBuilder.setCancelable(false);
-                mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dismissKeyboardShortcutsHelper();
-                    }
-                });
-                AlertDialog alertDialog = mBuilder.create();
-                alertDialog.show();
+               startActivity(new Intent(MainActivity.this,Info.class));
             }
         });
 
@@ -124,33 +111,7 @@ public class MainActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
-                mBuilder.setTitle("Choose the game");
-                mBuilder.setPositiveButton("Quizzes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        startActivity(new Intent(MainActivity.this,quiz.class));
-                    }
-                });
-                mBuilder.setNegativeButton("Puzzle", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
-                        startActivity(new Intent(MainActivity.this,Puzzle.class));
-                        mBuilder.setCancelable(false);
-                        mBuilder.setNegativeButton("Puzzle", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-
-                            }
-                        });
-
-                        AlertDialog alertDialog = mBuilder.create();
-                        alertDialog.show();
-                    }
-                });
-                AlertDialog alertDialog = mBuilder.create();
-                alertDialog.show();
+                startActivity(new Intent(MainActivity.this,ChooseGame.class));
             }
         });
 

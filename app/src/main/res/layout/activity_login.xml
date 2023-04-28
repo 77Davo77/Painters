@@ -97,35 +97,22 @@
         app:layout_constraintTop_toBottomOf="@+id/Email"
         app:layout_constraintVertical_bias="0.024" />
 
-    <CheckBox
-        android:id="@+id/remember"
-        android:layout_width="315dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="184dp"
-        android:layout_marginBottom="11dp"
-        android:hint="@string/rem"
-        android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/login"
-        app:layout_constraintEnd_toEndOf="@+id/forgotpass1"
-        app:layout_constraintTop_toBottomOf="@+id/password2"
-        app:layout_constraintVertical_bias="0.187"
-        tools:ignore="MissingConstraints" />
-
     <TextView
         android:id="@+id/forgotpass1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password2"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="35dp"
         android:hint="@string/forgot"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password2"
-        app:layout_constraintVertical_bias="0.492"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <com.google.android.material.button.MaterialButton
@@ -142,10 +129,10 @@
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintVertical_bias="0.396" />
 
     <TextView
         android:id="@+id/account"
@@ -181,16 +168,15 @@
         android:id="@+id/abc"
         android:layout_width="160dp"
         android:layout_height="33dp"
+        android:layout_marginTop="188dp"
         android:gravity="center"
         android:hint="@string/or"
-        android:textSize="20dp"
         android:textColorHint="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login"
-        app:layout_constraintVertical_bias="0.851"
+        app:layout_constraintVertical_bias="0.46"
         tools:ignore="MissingConstraints" />
 
     <ImageView
@@ -198,12 +184,12 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="384dp"
         android:src="@drawable/google"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 

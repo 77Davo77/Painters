@@ -14,7 +14,7 @@
     <string name="or">Or sign in with</string>
     <string name="signup2">Sign Up</string>
     <string name="username">Username</string>
-    <string name="conform">Conform Password</string>
+    <string name="confirm" translatable="false">Confirm Password</string>
     <string name="create">CREATE ACCOUNT</string>
     <string name="doyou">Do you already have an Account?</string>
     <string name="forgottext">Forgot Password?</string>
@@ -31,12 +31,12 @@
 During the game you will also learn about their biography.
 Due to non-registration, the result of the game may be lost.</string>
     <string name="abc2">
-All permissions are available (paintings is also available) The creator of the game is David Ghazaryan</string>
+        The creator of the game is David Ghazaryan</string>
     <string name="abc3">But it is not exactly</string>
 
-    <string name="ayvazovski2"><b>Descent of Noah from Ararat</b></string>
+    <string name="aliq1"><b>Descent of Noah from Ararat</b></string>
 
-    <string name="ayvazovski">
+    <string name="aliq2">
         <b>Descent of Noah from Ararat</b>
         \n\n
         "Descent of Noah from Ararat (1889)", - a painting <u>by Ivan Konstantinovich Aivazovsky</u>.
@@ -45,13 +45,23 @@ All permissions are available (paintings is also available) The creator of the g
 
     </string>
 
-    <string name="aliq1"><b>The Ninth Wave</b></string>
+    <string name="ayvazovski2"><b>The Ninth Wave</b></string>
 
-    <string name="aliq2">
+    <string name="ayvazovski">
 
-        <b>The Ninth Wave</b>  is a 1905 painting <u>by Ivan Konstantinovich Aivazovsky</u>.
+        <b>The Ninth Wave</b>  is a 1905 painting by Ivan Konstantinovich Aivazovsky.
+        \n\n
+        <b>"Noah's Descent from Mount Ararat"</b> (also "Noah descends from Mount Ararat") is an oil painting by Ivan Aivazovsky in 1889.
+        The painting depicts one of the episodes of the Old Testament history: Noah returns to earth after the Flood.
+        Together with him, his sons, wife, wives of sons and numerous animals, who escaped the flood thanks to the ark, descend from the Ararat mountains.
+
+        The painting was exhibited for the first time in Paris. Subsequently, Aivazovsky presented it to a school in New Nakhichevan.
+        The painting was brought to Yerevan by Martiros Saryan in 1921, during the Civil War.Currently exhibited at the National Gallery of Armenia.
         \n\n
         <b>Ivan Konstantinovich Aivazovsky</b>
+        van Konstantinovich Aivazovsky (Russian: Иван Константинович Айвазовский; 29 July 1817 – 2 May 1900) was an Armenian-Russian Romantic painter
+        who is considered one of the greatest masters of marine art.
+        Baptized as Hovhannes Aivazian, he was born into an Armenian family in the Black Sea port of Feodosia in Crimea and was mostly based there.
         \n\n
 
 
