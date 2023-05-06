@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#B5B3B3"
     android:layout_height="match_parent"
     tools:context=".PuzzleLevels">
 
@@ -10,16 +11,16 @@
         android:id="@+id/container1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#B5B5B5"
         android:gravity="center|center_horizontal|center_vertical"
         android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/container2"
+            android:background="@drawable/input_bg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="20dp">
 
 
             <LinearLayout
@@ -27,14 +28,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/back14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="135dp"
-                    android:paddingRight="135dp"
-                    android:drawableLeft="@drawable/baseline__big_home_24" />
 
             </LinearLayout>
 
@@ -90,5 +83,20 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/input_bg"
+        app:itemIconTint="@color/white"
+        android:layout_marginTop="820dp"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="31dp" />
 
 </RelativeLayout>

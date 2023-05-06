@@ -167,4 +167,25 @@
         app:layout_constraintTop_toBottomOf="@+id/signupbtn"
         tools:ignore="MissingConstraints" />
 
+    <TextView
+        android:id="@+id/verification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/forgotpass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp"
+        android:text="verification"
+        android:textColorHint="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:background="@drawable/input_bg"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgotpass"
+        tools:ignore="MissingConstraints"
+        android:textColor="@color/white"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

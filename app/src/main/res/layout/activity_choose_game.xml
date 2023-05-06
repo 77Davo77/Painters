@@ -5,7 +5,7 @@
     android:id="@+id/btnBack"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#B5B3B3"
     android:orientation="vertical"
     tools:context=".ChooseGame">
 
@@ -13,7 +13,6 @@
         android:id="@+id/container1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#B5B5B5"
         android:gravity="center|center_horizontal|center_vertical"
         android:orientation="vertical">
 
@@ -21,8 +20,9 @@
             android:id="@+id/container2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="#B5B3B3"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="30dp">
 
 
             <LinearLayout
@@ -30,14 +30,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/back12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="135dp"
-                    android:paddingRight="135dp"
-                    android:drawableLeft="@drawable/baseline__big_home_24" />
 
             </LinearLayout>
 
@@ -56,11 +48,11 @@
                         android:id="@+id/imageButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginEnd="10dp"
-                        android:background="#B5B5B5"
+                        android:layout_marginEnd="40dp"
                         android:layout_weight="1"
-                        app:srcCompat="@drawable/puzzle"
-                        android:contentDescription="TODO" />
+                        android:background="@color/white"
+                        android:contentDescription="TODO"
+                        app:srcCompat="@drawable/puzzle" />
 
                     <ImageButton
                         android:id="@+id/imageButton2"
@@ -68,12 +60,28 @@
                         android:layout_height="match_parent"
                         android:layout_marginEnd="10dp"
                         android:layout_weight="1"
-                        android:background="#B5B5B5"
-                        app:srcCompat="@drawable/quiz"
-                        android:contentDescription="TODO" />
+                        android:background="#B5B3B3"
+                        android:contentDescription="TODO"
+                        app:srcCompat="@drawable/quiz" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navigation_bar1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_bg"
+            app:itemIconTint="@color/white"
+            android:layout_marginTop="600dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:itemTextColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/bottom_nav_menu"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="31dp" />
+
     </LinearLayout>
 
 </RelativeLayout>

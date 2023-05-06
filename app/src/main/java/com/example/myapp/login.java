@@ -66,7 +66,6 @@ public class login extends AppCompatActivity {
             public void onClick(View view) {
                 String email = binding.Email.getText().toString().trim();
                 String password=binding.password2.getText().toString().trim();
-                if(firebaseUser.getCurrentUser().isEmailVerified()){
                     firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -94,12 +93,7 @@ public class login extends AppCompatActivity {
                                     Toast.makeText(login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                 }
                             });
-                }else{
-                    sendVerificationEmail2();
-                    Toast.makeText(login.this, "Email sent, please verify your email", Toast.LENGTH_SHORT).show();
                 }
-
-            }
         });
 
         binding.forgotpass1.setOnClickListener(new View.OnClickListener() {
@@ -181,23 +175,6 @@ public class login extends AppCompatActivity {
     });
 
 
-    }
-
-    private void sendVerificationEmail2() {
-        FirebaseAuth.getInstance().getCurrentUser().
-                sendEmailVerification()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Toast.makeText(login.this, "Email sent", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(login.this,e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
     }
 
     void signIn() {

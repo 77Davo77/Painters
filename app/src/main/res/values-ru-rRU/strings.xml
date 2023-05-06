@@ -15,7 +15,7 @@
     <string name="or">или войдите с помощью</string>
     <string name="signup2">Регистрация</string>
     <string name="username">Имя пользователя</string>
-    <string name="conform">Подтвердить пароль</string>
+    <string name="confirm">Подтвердить пароль</string>
     <string name="create">зарегистрироваться</string>
     <string name="doyou">У вас уже есть аккаунт?</string>
     <string name="forgottext">Забыли пароль?</string>
