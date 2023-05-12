@@ -16,6 +16,9 @@
         android:theme="@style/Theme.MyApp"
         tools:targetApi="31">
         <activity
+            android:name=".WonActivity"
+            android:exported="false" />
+        <activity
             android:name=".quizi2"
             android:exported="false" />
         <activity

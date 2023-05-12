@@ -1,16 +1,25 @@
 package com.example.myapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class quizi2 extends AppCompatActivity {
 
     public static ArrayList<quizi> list;
+    DatabaseReference databaseReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,14 +27,35 @@ public class quizi2 extends AppCompatActivity {
         setContentView(R.layout.activity_quizi2);
 
         list = new ArrayList<>();
-        list.add(new quizi("mamat","papat","mort","answer"));
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Hakob Hovnatanyan");
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    quizi quizi = dataSnapshot.getValue(quizi.class);
+                    list.add(quizi);
+                }
+
+                Intent intent = new Intent(quizi2.this, quiz.class);
+                startActivity(intent);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(quizi2.this,quiz.class);
-                startActivity(intent);
+                //           Intent intent = new Intent(quizi2.this,quiz.class);
+                //           startActivity(intent);
             }
-        },1500);
+        }, 1000);
     }
 }
