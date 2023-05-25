@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +28,8 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Locale;
+
 public class Account extends AppCompatActivity {
 
     TextView name, email, SignOutBtn;
@@ -40,6 +45,7 @@ public class Account extends AppCompatActivity {
         Window w = getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+        Language.updateLanguage(this);
         setContentView(R.layout.activity_account);
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
@@ -94,5 +100,21 @@ public class Account extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),login.class));
             }
         });
+    }
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
+
+    public void loadLocale() {
+        SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = prefs.getString("My_Lang", "");
+        setLocale(language);
     }
 }

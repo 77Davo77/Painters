@@ -22,6 +22,34 @@
 
     </RelativeLayout>
 
+    <ImageView
+        android:src="@drawable/hakob1"
+        android:layout_marginTop="10dp"
+        android:layout_width="600dp"
+        android:layout_height="380dp"
+        android:id="@+id/quizImage"
+        android:layout_gravity="center_horizontal" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/questionCard"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        app:cardCornerRadius="5dp">
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="question"
+        android:textColor="@color/black" />
+    </androidx.cardview.widget.CardView>
+
 
 
     <androidx.cardview.widget.CardView
@@ -91,15 +119,15 @@
     <LinearLayout
         android:id="@+id/nextBack"
         android:layout_width="match_parent"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="5dp"
 
         >
 
         <TextView
             android:id="@+id/Next"
-            android:layout_width="60dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="160dp"

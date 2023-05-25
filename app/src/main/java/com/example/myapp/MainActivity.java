@@ -1,5 +1,6 @@
 package com.example.myapp;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.play.core.integrity.v;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Locale;
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
     ImageView changeLanguage, infoBtn;
     FirebaseAuth firebaseAuth;
-    TextView how2, start,play;
+    TextView how2, start, play;
 
     private long backPressedTime;
     private Toast backToast;
@@ -42,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
         Window w = getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        loadLocale();
         setContentView(R.layout.activity_main);
-        firebaseAuth= FirebaseAuth.getInstance();
+        Language.updateLanguage(this);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         start = findViewById(R.id.button1);
         start.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         how2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               startActivity(new Intent(MainActivity.this,Info.class));
+                startActivity(new Intent(MainActivity.this, Info.class));
             }
         });
 
@@ -111,77 +113,57 @@ public class MainActivity extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this,ChooseGame.class));
+                startActivity(new Intent(MainActivity.this, ChooseGame.class));
             }
         });
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                    switch (item.getItemId()) {
-
-                        case R.id.statistics:
-                            startActivity(new Intent(MainActivity.this, Statistics2.class));
-                            break;
-                        case R.id.account:
-                            startActivity(new Intent(MainActivity.this, Account.class));
-                            break;
-                    }
-                    return true;
-                }
-            });
-
-        changeLanguage = findViewById(R.id.change);
-        changeLanguage.setOnClickListener(new View.OnClickListener() {
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                showChangeLanguageDialog();
-            }
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-            private void showChangeLanguageDialog() {
-                final String[] listItems = {"English", "Հայերեն", "Русский"};
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
-                mBuilder.setTitle("Choose Language...");
-                mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if (i == 0) {
-                            setLocale("en");
-                            recreate();
-                        } else if (i == 1) {
-                            setLocale("hy");
-                            recreate();
-                        } else if (i == 2) {
-                            setLocale("ru");
-                            recreate();
-                        }
+                switch (item.getItemId()) {
 
-
-                    }
-                });
-                AlertDialog mDialog = mBuilder.create();
-                mDialog.show();
+                    case R.id.statistics:
+                        startActivity(new Intent(MainActivity.this, Statistics2.class));
+                        break;
+                    case R.id.account:
+                        startActivity(new Intent(MainActivity.this, Account.class));
+                        break;
+                }
+                return true;
             }
         });
-    }
 
-    private void setLocale(String lang) {
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
-        editor.putString("My_Lang", lang);
-        editor.apply();
-    }
+        ImageView flagArmenia = findViewById(R.id.flagArmenia);
+        flagArmenia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String lang = "hy";
+                Language.setLocale(MainActivity.this, lang);
+                recreate();
+            }
+        });
 
-    public void loadLocale() {
-        SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
-        String language = prefs.getString("My_Lang", "");
-        setLocale(language);
+        ImageView flagRussia = findViewById(R.id.flagRussia);
+        flagRussia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String lang = "ru";
+                Language.setLocale(MainActivity.this, lang);
+                recreate();
+            }
+        });
+
+        ImageView flagEnglish = findViewById(R.id.flagEnglish);
+        flagEnglish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String lang = "en";
+                Language.setLocale(MainActivity.this, lang);
+                recreate();
+            }
+        });
     }
 
     @Override

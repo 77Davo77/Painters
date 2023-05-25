@@ -1,20 +1,29 @@
 package com.example.myapp;
 
+import android.widget.ImageView;
+
 public class quizi {
 
-    String option1,option2,option3,answer;
+    String option1,option2,option3,answer,question;
+
 
     public quizi(){
 
     }
 
-    public quizi(String option1, String option2, String option3, String answer) {
+
+
+    public quizi(String option1, String question, String option2, String option3, String answer) {
+        this.question = question;
         this.option1 = option1;
         this.option2 = option2;
         this.option3 = option3;
         this.answer = answer;
     }
 
+    public String getQuestion() {
+        return question;
+    }
     public String getOption1() {
         return option1;
     }

@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -31,6 +34,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class login extends AppCompatActivity {
@@ -54,7 +58,11 @@ public class login extends AppCompatActivity {
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         binding=ActivityLoginBinding.inflate(getLayoutInflater());
+        Language.updateLanguage(this);
         setContentView(binding.getRoot());
+
+
+
         googleBtn = findViewById(R.id.imageView);
 
         firebaseAuth=FirebaseAuth.getInstance();

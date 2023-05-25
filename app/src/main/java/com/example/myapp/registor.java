@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,7 +54,10 @@ public class registor extends AppCompatActivity {
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         binding = ActivityRegistorBinding.inflate(getLayoutInflater());
+        Language.updateLanguage(this);
         setContentView(binding.getRoot());
+
+
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
 

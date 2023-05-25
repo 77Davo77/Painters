@@ -28,19 +28,17 @@ public class quizi2 extends AppCompatActivity {
 
         list = new ArrayList<>();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Hakob Hovnatanyan");
+        databaseReference= FirebaseDatabase.getInstance().getReference("Hakob Hovnatanyan");
+
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    quizi quizi = dataSnapshot.getValue(quizi.class);
+                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                    quizi quizi=dataSnapshot.getValue(quizi.class);
                     list.add(quizi);
                 }
-
-                Intent intent = new Intent(quizi2.this, quiz.class);
-                startActivity(intent);
-
+                startActivity(new Intent(quizi2.this,quiz.class));
             }
 
             @Override
@@ -49,13 +47,16 @@ public class quizi2 extends AppCompatActivity {
             }
         });
 
+  //      list.add(new quizi("mamat","papat","mort","mort"));
+  //      list.add(new quizi("kuku","lala","titik","lala"));
+  //      list.add(new quizi("Hovhaness","lala","titik","Hovhaness"));
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                //           Intent intent = new Intent(quizi2.this,quiz.class);
-                //           startActivity(intent);
+     //           Intent intent = new Intent(quizi2.this,quiz.class);
+     //           startActivity(intent);
             }
-        }, 1000);
+        },1000);
     }
 }

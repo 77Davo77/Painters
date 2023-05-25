@@ -12,15 +12,39 @@
     android:paddingBottom="10dp"
     tools:context=".MainActivity">
 
+
     <ImageView
-        android:id="@+id/change"
-        android:layout_width="53dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="48dp"
-        android:src="@drawable/change"
+        android:id="@+id/flagEnglish"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/en"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintHorizontal_bias="0.309"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="10dp" />
+
+    <ImageView
+        android:id="@+id/flagArmenia"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/hy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="10dp" />
+
+    <ImageView
+        android:id="@+id/flagRussia"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ru"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="10dp" />
 
     <ImageView
         android:id="@+id/info"
