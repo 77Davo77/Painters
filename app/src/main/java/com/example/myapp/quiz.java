@@ -17,8 +17,8 @@ import java.util.List;
 
 public class quiz extends AppCompatActivity {
 
-    TextView option1, option2, option3, question;
-    CardView card1, card2, card3;
+    TextView option1, option2, option3,option4, question;
+    CardView card1, card2, card3,card4;
     List<quizi> allQuestions;
 
     LinearLayout nextBack;
@@ -42,6 +42,7 @@ public class quiz extends AppCompatActivity {
         card1.setBackgroundColor(getResources().getColor(R.color.white));
         card2.setBackgroundColor(getResources().getColor(R.color.white));
         card3.setBackgroundColor(getResources().getColor(R.color.white));
+        card4.setBackgroundColor(getResources().getColor(R.color.white));
 
         enableButton();
         nextBack.setClickable(false);
@@ -54,9 +55,11 @@ public class quiz extends AppCompatActivity {
         option1 = findViewById(R.id.option1);
         option2 = findViewById(R.id.option2);
         option3 = findViewById(R.id.option3);
+        option4 = findViewById(R.id.option4);
         card1 = findViewById(R.id.card1);
         card2 = findViewById(R.id.card2);
         card3 = findViewById(R.id.card3);
+        card4 = findViewById(R.id.card4);
 
         nextBack = findViewById(R.id.nextBack);
     }
@@ -66,6 +69,7 @@ public class quiz extends AppCompatActivity {
         option1.setText(quizi.getOption1());
         option2.setText(quizi.getOption2());
         option3.setText(quizi.getOption3());
+        option4.setText(quizi.getOption4());
     }
 
 
@@ -81,18 +85,21 @@ public class quiz extends AppCompatActivity {
         card1.setClickable(true);
         card2.setClickable(true);
         card3.setClickable(true);
+        card4.setClickable(true);
     }
 
     public void disableButton() {
         card1.setClickable(false);
         card2.setClickable(false);
         card3.setClickable(false);
+        card4.setClickable(false);
     }
 
     public void resetColor() {
         card1.setBackgroundColor(getResources().getColor(R.color.white));
         card2.setBackgroundColor(getResources().getColor(R.color.white));
         card3.setBackgroundColor(getResources().getColor(R.color.white));
+        card4.setBackgroundColor(getResources().getColor(R.color.white));
     }
 
     public void Correct(CardView cardView) {
@@ -187,6 +194,18 @@ public class quiz extends AppCompatActivity {
     }
 
     public void Option3Click(View view) {
+        nextBack.setClickable(true);
+        if (quizi.getOption3().equals(quizi.getAnswer())) {
+            card3.setCardBackgroundColor(getResources().getColor(R.color.green));
+
+            if (index < allQuestions.size() - 1) {
+                Correct(card3);
+            }
+        } else {
+            Wrong(card3);
+        }
+    }
+    public void Option4Click(View view) {
         nextBack.setClickable(true);
         if (quizi.getOption3().equals(quizi.getAnswer())) {
             card3.setCardBackgroundColor(getResources().getColor(R.color.green));
