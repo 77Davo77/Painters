@@ -57,57 +57,61 @@ public class login extends AppCompatActivity {
         Window w = getWindow();
         w.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-        binding=ActivityLoginBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
         Language.updateLanguage(this);
         setContentView(binding.getRoot());
 
 
-
         googleBtn = findViewById(R.id.imageView);
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        firebaseUser=FirebaseAuth.getInstance();
-        progressDialog=new ProgressDialog(this);
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
 
         binding.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String name = getIntent().getAction();
                 String email = binding.Email.getText().toString().trim();
-                String password=binding.password2.getText().toString().trim();
-                    firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if(task.isSuccessful()){
-                                        Intent intent = new Intent(login.this,Account.class);
+                String password = binding.password2.getText().toString().trim();
+
+                firebaseAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                    if (user != null && user.isEmailVerified()) {
+                                        Intent intent = new Intent(login.this, Account.class);
                                         intent.putExtra("email", email);
+                                        intent.putExtra("name", name);
                                         startActivity(intent);
                                         Toast.makeText(login.this, "Successful", Toast.LENGTH_SHORT).show();
-                                    }else {
-                                        Toast.makeText(login.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(login.this, "Please verify your email first", Toast.LENGTH_SHORT).show();
                                     }
+                                } else {
+                                    Toast.makeText(login.this, Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                                 }
-                            })
-                            .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                                @Override
-                                public void onSuccess(AuthResult authResult) {
-                                    Toast.makeText(login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(login.this, Account.class));
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    progressDialog.cancel();
-                                    Toast.makeText(login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                progressDialog.cancel();
+                                Toast.makeText(login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
         });
+
+// ...
+
 
         binding.forgotpass1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email=binding.Email.getText().toString();
+                String email = binding.Email.getText().toString();
                 progressDialog.setTitle("Sending Mail");
                 progressDialog.show();
                 firebaseAuth.sendPasswordResetEmail(email)
@@ -122,7 +126,7 @@ public class login extends AppCompatActivity {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 progressDialog.cancel();
-                                Toast.makeText(login.this,e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
             }
@@ -131,7 +135,7 @@ public class login extends AppCompatActivity {
         binding.textViewSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(login.this,registor.class));
+                startActivity(new Intent(login.this, registor.class));
             }
         });
 
@@ -146,41 +150,37 @@ public class login extends AppCompatActivity {
         });
 
         TextView btn3 = findViewById(R.id.back2);
-        btn3.setOnClickListener(new View.OnClickListener()
-
-    {
-        @Override
-        public void onClick (View view){
-        startActivity(new Intent(login.this, MainActivity.class));
-    }
-    });
-        EditText password2 = findViewById(R.id.password2);
-        password2.setOnTouchListener(new View.OnTouchListener()
-
-    {
-        @Override
-        public boolean onTouch (View view, MotionEvent motionEvent){
-        final int Right = 2;
-        if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-            if (motionEvent.getRawX() >= password2.getRight() - password2.getCompoundDrawables()[Right].getBounds().width()) {
-                int selection = password2.getSelectionEnd();
-                if (passwordVisible) {
-                    password2.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_off_24, 0);
-                    password2.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    passwordVisible = false;
-                } else {
-                    password2.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_24, 0);
-                    password2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    passwordVisible = true;
-                }
-                password2.setSelection(selection);
-                return true;
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(login.this, MainActivity.class));
             }
-        }
+        });
+        EditText password2 = findViewById(R.id.password2);
+        password2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int Right = 2;
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    if (motionEvent.getRawX() >= password2.getRight() - password2.getCompoundDrawables()[Right].getBounds().width()) {
+                        int selection = password2.getSelectionEnd();
+                        if (passwordVisible) {
+                            password2.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_off_24, 0);
+                            password2.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                            passwordVisible = false;
+                        } else {
+                            password2.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_24, 0);
+                            password2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            passwordVisible = true;
+                        }
+                        password2.setSelection(selection);
+                        return true;
+                    }
+                }
 
-        return false;
-    }
-    });
+                return false;
+            }
+        });
 
 
     }
@@ -194,18 +194,19 @@ public class login extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 100){
+        if (requestCode == 100) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
 
             try {
                 task.getResult(ApiException.class);
                 navigateToSecondActivity();
             } catch (ApiException e) {
-                Toast.makeText(getApplicationContext(),"Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
             }
 
         }
     }
+
     void navigateToSecondActivity() {
         finish();
         Intent intent = new Intent(getApplicationContext(), Account.class);

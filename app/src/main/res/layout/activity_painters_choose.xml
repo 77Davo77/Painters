@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B5B3B3"
+    tools:context=".PaintersChoose">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/painter1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="painter1"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:padding="9dp"
+                android:background="@drawable/textview"
+                />
+
+            <TextView
+                android:id="@+id/painter2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="painter2"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:padding="9dp"
+                android:background="@drawable/textview"
+                />
+
+            <TextView
+                android:id="@+id/painter3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="painter3"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:padding="9dp"
+                android:background="@drawable/textview"
+                />
+
+            <TextView
+                android:id="@+id/painter4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="painter4"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:padding="9dp"
+                android:background="@drawable/textview"
+                />
+
+            <TextView
+                android:id="@+id/painter5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="painter5"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:padding="9dp"
+                android:background="@drawable/textview"
+                />
+
+            <TextView
+                android:id="@+id/painter6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="painter6"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:padding="9dp"
+                android:background="@drawable/textview"
+                />
+
+            <TextView
+                android:id="@+id/painter7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="painter7"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:padding="9dp"
+                android:background="@drawable/textview"
+                />
+
+            <TextView
+                android:id="@+id/painter8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="painter8"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:padding="9dp"
+                android:background="@drawable/textview"
+                />
+
+            <TextView
+                android:id="@+id/painter9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="painter9"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:padding="9dp"
+                android:background="@drawable/textview"
+                />
+
+            <TextView
+                android:id="@+id/painter10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="painter10"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:padding="9dp"
+                android:background="@drawable/textview"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

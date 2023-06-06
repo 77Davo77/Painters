@@ -57,6 +57,6 @@ public class quizi2 extends AppCompatActivity {
      //           Intent intent = new Intent(quizi2.this,quiz.class);
      //           startActivity(intent);
             }
-        },1000);
+        },10);
     }
 }
