@@ -24,6 +24,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.play.core.integrity.v;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Locale;
 
@@ -119,22 +120,25 @@ public class MainActivity extends AppCompatActivity {
         });
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null && user.isEmailVerified()) {
+            bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                    case R.id.statistics:
-                        startActivity(new Intent(MainActivity.this, Statistics2.class));
-                        break;
-                    case R.id.account:
-                        startActivity(new Intent(MainActivity.this, Account.class));
-                        break;
+                    switch (item.getItemId()) {
+
+                        case R.id.account:
+                            startActivity(new Intent(MainActivity.this, Account.class));
+                            break;
+                    }
+                    return true;
                 }
-                return true;
-            }
-        });
+            });
+        }else{
+            Toast.makeText(this, "You dont have account", Toast.LENGTH_SHORT).show();
+        }
 
         ImageView flagArmenia = findViewById(R.id.flagArmenia);
         flagArmenia.setOnClickListener(new View.OnClickListener() {

@@ -38,9 +38,6 @@ public class ChooseGame extends AppCompatActivity {
 
                 switch (item.getItemId()) {
 
-                    case R.id.statistics:
-                        startActivity(new Intent(ChooseGame.this, Statistics2.class));
-                        break;
                     case R.id.account:
                         startActivity(new Intent(ChooseGame.this, Account.class));
                         break;

@@ -35,9 +35,6 @@ public class PuzzleLevels extends AppCompatActivity {
 
                 switch (item.getItemId()) {
 
-                    case R.id.statistics:
-                        startActivity(new Intent(PuzzleLevels.this, Statistics2.class));
-                        break;
                     case R.id.account:
                         startActivity(new Intent(PuzzleLevels.this, Account.class));
                         break;

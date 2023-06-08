@@ -62,19 +62,7 @@
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".About2"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".About"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".Level1"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".Statistics2"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity

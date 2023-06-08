@@ -38,6 +38,10 @@ public class AboutThePainters extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_the_painters);
 
+        currentImageId = "image1";
+        updateCurrentImage();
+        loadCurrentImage();
+
         imageView11 = findViewById(R.id.imageView11);
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 

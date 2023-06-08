@@ -51,6 +51,13 @@ public class Account extends AppCompatActivity {
         email = findViewById(R.id.email);
         SignOutBtn = findViewById(R.id.out);
 
+        Intent intent = getIntent();
+        String personEmail2 = intent.getStringExtra("email");
+        String personName2 = intent.getStringExtra("name");
+
+        name.setText(personName2);
+        email.setText(personEmail2);
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener()
 
@@ -62,9 +69,6 @@ public class Account extends AppCompatActivity {
 
                     case R.id.home:
                         startActivity(new Intent(Account.this, MainActivity.class));
-                        break;
-                    case R.id.statistics:
-                        startActivity(new Intent(Account.this, Statistics2.class));
                         break;
                 }
                 return true;
