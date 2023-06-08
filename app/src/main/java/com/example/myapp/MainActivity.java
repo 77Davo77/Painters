@@ -132,12 +132,13 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.account:
                             startActivity(new Intent(MainActivity.this, Account.class));
                             break;
+                        case R.id.home:
+                            startActivity(new Intent(MainActivity.this, MainActivity.class));
+                            break;
                     }
                     return true;
                 }
             });
-        }else{
-            Toast.makeText(this, "You dont have account", Toast.LENGTH_SHORT).show();
         }
 
         ImageView flagArmenia = findViewById(R.id.flagArmenia);

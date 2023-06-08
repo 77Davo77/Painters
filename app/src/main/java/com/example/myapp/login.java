@@ -105,8 +105,6 @@ public class login extends AppCompatActivity {
             }
         });
 
-// ...
-
 
         binding.forgotpass1.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -32,15 +32,12 @@ public class AboutThePainters extends AppCompatActivity {
     private String currentImageId;
     private TextView text1;
     private DatabaseReference databaseReference;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_the_painters);
 
         currentImageId = "image1";
-        updateCurrentImage();
-        loadCurrentImage();
 
         imageView11 = findViewById(R.id.imageView11);
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
@@ -65,23 +62,19 @@ public class AboutThePainters extends AppCompatActivity {
                     vernagir.setText(vernagirData);
                     text1.setText(text1Data);
 
-                    // Сохраняем URL текущего изображения при запуске активности
                     currentImageId = dataSnapshot.child("images").child("currentImageId").getValue(String.class);
 
-                    // Загружаем изображение в соответствии с текущим идентификатором
                     loadCurrentImage();
 
                     TextView arrowBack = findViewById(R.id.textView5);
                     TextView arrowForward = findViewById(R.id.textView6);
 
                     arrowBack.setOnClickListener(new View.OnClickListener() {
-                        @SuppressLint("UseCompatLoadingForDrawables")
                         @Override
                         public void onClick(View v) {
                             vernagir.setText(vernagirData);
                             text1.setText(text1Data);
 
-                            // Обновляем текущий идентификатор изображения
                             currentImageId = "image1";
                             updateCurrentImage();
                             loadCurrentImage();
@@ -89,13 +82,11 @@ public class AboutThePainters extends AppCompatActivity {
                     });
 
                     arrowForward.setOnClickListener(new View.OnClickListener() {
-                        @SuppressLint("UseCompatLoadingForDrawables")
                         @Override
                         public void onClick(View v) {
                             vernagir.setText(vernagir2Data);
                             text1.setText(text2Data);
 
-                            // Обновляем текущий идентификатор изображения
                             currentImageId = "image2";
                             updateCurrentImage();
                             loadCurrentImage();
@@ -106,7 +97,7 @@ public class AboutThePainters extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(AboutThePainters.this, "Error retrieving data", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AboutThePainters.this, "Ошибка при получении данных", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -126,7 +117,7 @@ public class AboutThePainters extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(AboutThePainters.this, "Error loading image", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AboutThePainters.this, "Ошибка при загрузке изображения", Toast.LENGTH_SHORT).show();
             }
         });
     }
